@@ -4,27 +4,32 @@ namespace MemoryGra
 {
     public partial class MainPage : ContentPage
     {
+        ImageButton btn2;
+        ImageButton btn;
+        List<ImageButton> imageButtons = new List<ImageButton>();
         Random rnd = new Random();
-        int flower = 0;
-        int cherry = 0;
-        int orange = 0;
+        int[] but;
+        int flower, cherry, orange;
         int wylosowano;
+        int znaleziono;
+        string x, y;
         public MainPage()
         {
             InitializeComponent();
+            imageButtons.Add(Btn1);
+            imageButtons.Add(Btn2);
+            imageButtons.Add(Btn3);
+            imageButtons.Add(Btn4);
+            imageButtons.Add(Btn5);
+            imageButtons.Add(Btn6);
         }
 
         private async void OnGrajClicked(object sender, EventArgs e)
         {
-            flower = 0;
-            cherry = 0;
-            orange = 0;
-            int but1 = 0;
-            int but2 = 0;
-            int but3 = 0;
-            int but4 = 0;
-            int but5 = 0;
-            int but6 = 0;
+            foreach (var imgButton in imageButtons) imgButton.IsVisible = true;
+            but = new int[] { 0, 0, 0, 0, 0, 0 };
+            winLbl.Text = "";
+            flower = cherry = orange = 0;
             for (int i=0; i<6; i++)
             {
                     wylosowano = rnd.Next(1, 4);
@@ -60,80 +65,112 @@ namespace MemoryGra
 
                 if (i == 0) {
                     Btn1.Source = "o" + wylosowano.ToString() + ".png";
-                    but1 = wylosowano;
+                    but[0] = wylosowano;
                 }
                 if (i == 1)
                 {
                     Btn2.Source = "o" + wylosowano.ToString() + ".png";
-                    but2 = wylosowano;
+                    but[1] = wylosowano;
                 }
                 if (i == 2)
                 {
                     Btn3.Source = "o" + wylosowano.ToString() + ".png";
-                    but3 = wylosowano;
+                    but[2] = wylosowano;
                 }
                 if (i == 3)
                 {
                     Btn4.Source = "o" + wylosowano.ToString() + ".png";
-                    but4 = wylosowano;
+                    but[3] = wylosowano;
                 }
                 if (i == 4)
                 {
                     Btn5.Source = "o" + wylosowano.ToString() + ".png";
-                    but5 = wylosowano;
+                    but[4] = wylosowano;
                 }
                 if (i == 5)
                 {
                     Btn6.Source = "o" + wylosowano.ToString() + ".png";
-                    but6 = wylosowano;
+                    but[5] = wylosowano;
                 }
 
 
-                await Task.Delay(1000);
+                await Task.Delay(500);
 
 
-                Btn1.Source = "o0.png";
-                Btn2.Source = "o0.png";
-                Btn3.Source = "o0.png";
-                Btn4.Source = "o0.png";
-                Btn5.Source = "o0.png";
-                Btn6.Source = "o0.png";
+                foreach (var imgButton in imageButtons) imgButton.Source = "o0.png";
 
             }
 
 
 
 
-
-            Btn1.Source = "o" + but1 +".png";
-            Btn2.Source = "o" + but2 +".png";
-            Btn3.Source = "o" + but3 +".png";
-            Btn4.Source = "o" + but4 +".png";
-            Btn5.Source = "o" + but5 +".png";
-            Btn6.Source = "o" + but6 +".png";
+            Btn1.Source = "o" + but[0] +".png";
+            Btn2.Source = "o" + but[1] + ".png";
+            Btn3.Source = "o" + but[2] + ".png";
+            Btn4.Source = "o" + but[3] + ".png";
+            Btn5.Source = "o" + but[4] + ".png";
+            Btn6.Source = "o" + but[5] + ".png";
             await Task.Delay(500);
-            Btn1.Source = "o0.png";
-            Btn2.Source = "o0.png";
-            Btn3.Source = "o0.png";
-            Btn4.Source = "o0.png";
-            Btn5.Source = "o0.png";
-            Btn6.Source = "o0.png";
+            foreach (var imgButton in imageButtons) imgButton.Source = "o0.png";
+            foreach (var imgButton in imageButtons) imgButton.IsEnabled = true;
 
 
-
-            Btn1.IsEnabled = true;
-            Btn2.IsEnabled = true;
-            Btn3.IsEnabled = true;
-            Btn4.IsEnabled = true;
-            Btn5.IsEnabled = true;
-            Btn6.IsEnabled = true;
         }
 
 
-        private void OnCheckClicked (object sender, EventArgs e)
+        private async void OnCheckClicked (object sender, EventArgs e)
         {
-            Button btn = (Button)sender;
-            btn.ImageSource =;
+            if(x==null) btn = sender as ImageButton;
+            else btn2 = sender as ImageButton;
+
+            if (x == null)
+            {
+                btn.IsEnabled = false;
+                btn.Source = "o" + but[int.Parse((btn.CommandParameter).ToString()) - 1] + ".png";
+            }
+            else
+            {
+                btn2.IsEnabled = false;
+                btn2.Source = "o" + but[int.Parse((btn2.CommandParameter).ToString()) - 1] + ".png";
+            }
+
+
+            if (x == null) x = btn.Source.ToString();
+            else y = btn2.Source.ToString();
+
+
+
+
+
+            await Task.Delay(1000);
+
+
+            if (x == y && x != null)
+            {
+                x = null; y=null;
+                znaleziono++;
+                btn.IsVisible = false;
+                btn2.IsVisible = false;
+                btn = null;
+                btn2 = null;
+            }
+            else if (btn!=null && btn2!=null)
+            {
+                x = null; y = null;
+                btn.IsEnabled = true;
+                btn2.IsEnabled = true;
+                btn.Source = "o0.png";
+                btn2.Source = "o0.png";
+                btn = null;
+                btn2 = null;
+            }
+            if (znaleziono==3)
+            {
+                winLbl.Text = "Wygrałeś!";
+                znaleziono = 0;
+            }
+
+
         }
 
 

@@ -8,14 +8,19 @@
         <HorizontalStackLayout 
             Spacing="20"
             HorizontalOptions="Center">
-            
+
+            <Label
+                Text=""
+                x:Name="winLbl"/>
+
             <ImageButton
                 x:Name="Btn1"
                 Source="o0.png"
                 WidthRequest="75"
                 HeightRequest="100"
                 IsEnabled="False"
-                Clicked="OnCheckClicked"/>
+                Clicked="OnCheckClicked"
+                CommandParameter="1"/>
 
             <ImageButton
                 x:Name="Btn2"
@@ -23,7 +28,8 @@
                 WidthRequest="75"
                 HeightRequest="100"
                 IsEnabled="False"
-                Clicked="OnCheckClicked"/>
+                Clicked="OnCheckClicked"
+                CommandParameter="2"/>
 
             <ImageButton
                 x:Name="Btn3"
@@ -31,7 +37,8 @@
                 WidthRequest="75"
                 HeightRequest="100"
                 IsEnabled="False"
-                Clicked="OnCheckClicked"/>
+                Clicked="OnCheckClicked"
+                CommandParameter="3"/>
 
             <ImageButton
                 x:Name="Btn4"
@@ -39,7 +46,8 @@
                 WidthRequest="75"
                 HeightRequest="100"
                 IsEnabled="False"
-                Clicked="OnCheckClicked"/>
+                Clicked="OnCheckClicked"
+                CommandParameter="4"/>
 
             <ImageButton
                 x:Name="Btn5"
@@ -47,7 +55,8 @@
                 WidthRequest="75"
                 HeightRequest="100"
                 IsEnabled="False"
-                Clicked="OnCheckClicked"/>
+                Clicked="OnCheckClicked"
+                CommandParameter="5"/>
 
             <ImageButton
                 x:Name="Btn6"
@@ -55,7 +64,8 @@
                 WidthRequest="75"
                 HeightRequest="100"
                 IsEnabled="False"
-                Clicked="OnCheckClicked"/>
+                Clicked="OnCheckClicked"
+                CommandParameter="6"/>
         </HorizontalStackLayout>
 
         <Button
