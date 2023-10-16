@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MemoryGra.MainPage">
+
+    <VerticalStackLayout>
+
+        <HorizontalStackLayout 
+            Spacing="20"
+            HorizontalOptions="Center">
+            
+            <ImageButton
+                x:Name="Btn1"
+                Source="o0.png"
+                WidthRequest="75"
+                HeightRequest="100"
+                IsEnabled="False"
+                Clicked="OnCheckClicked"/>
+
+            <ImageButton
+                x:Name="Btn2"
+                Source="o0.png"
+                WidthRequest="75"
+                HeightRequest="100"
+                IsEnabled="False"
+                Clicked="OnCheckClicked"/>
+
+            <ImageButton
+                x:Name="Btn3"
+                Source="o0.png"
+                WidthRequest="75"
+                HeightRequest="100"
+                IsEnabled="False"
+                Clicked="OnCheckClicked"/>
+
+            <ImageButton
+                x:Name="Btn4"
+                Source="o0.png"
+                WidthRequest="75"
+                HeightRequest="100"
+                IsEnabled="False"
+                Clicked="OnCheckClicked"/>
+
+            <ImageButton
+                x:Name="Btn5"
+                Source="o0.png"
+                WidthRequest="75"
+                HeightRequest="100"
+                IsEnabled="False"
+                Clicked="OnCheckClicked"/>
+
+            <ImageButton
+                x:Name="Btn6"
+                Source="o0.png"
+                WidthRequest="75"
+                HeightRequest="100"
+                IsEnabled="False"
+                Clicked="OnCheckClicked"/>
+        </HorizontalStackLayout>
+
+        <Button
+            Text="Graj"
+            WidthRequest="100"
+            Clicked="OnGrajClicked"/>
+
+    </VerticalStackLayout>
+
+</ContentPage>
